@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  project:
+    container_name: client-notes-jobs
+    build:
+      context: .
+      dockerfile: Dockerfile
+    
+    volumes:
+      - '.:app'
+      - '/app/node_modules'
+    
+    ports:
+      - '4000:4000'
+
+    environment:
+      TZ: "UTC"
+      PORT: 4000
+      NODE_ENV: "local"
+      BASE_APP: "./src"
+      SKIP_PREFLIGHT_CHECK: true
+      REACT_APP_ENVIROMENT: DEVELOPMENT
