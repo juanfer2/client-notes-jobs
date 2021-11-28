@@ -23,7 +23,7 @@ function App() {
   console.log(state)
 
   return (
-    <div className="App">
+    <div className="main">
       <Home />
     </div>
   )

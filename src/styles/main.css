@@ -1,38 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap');
-
-.card-list {
-  display: -webkit-box;
-  display: -ms-flexbox;
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap");
+.card-list-123123 {
   display: flex;
   padding: 3rem;
 }
-
-.card-list::-webkit-scrollbar {
+.card-list-123123::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
-
-.card-list::-webkit-scrollbar-thumb {
+.card-list-123123::-webkit-scrollbar-thumb {
   background: #201c29;
   border-radius: 10px;
-  -webkit-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.25),
-    inset -2px -2px 2px rgba(0, 0, 0, 0.25);
-  box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.25),
-    inset -2px -2px 2px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.25), inset -2px -2px 2px rgba(0, 0, 0, 0.25);
 }
-
-.card-list::-webkit-scrollbar-track {
+.card-list-123123::-webkit-scrollbar-track {
   background: linear-gradient(90deg, #201c29, #201c29 1px, #17141d 0, #17141d);
 }
-
-.card-list .card {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.card-list-123123 .card {
   display: flex;
   position: relative;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
   height: 350px;
   width: 400px;
@@ -40,76 +25,51 @@
   padding: 1.5em;
   border-radius: 16px;
   background: #17141d;
-  -webkit-box-shadow: -1rem 0 3rem #000;
   box-shadow: -1rem 0 3rem #000;
-  -webkit-transition: 0.2s;
   transition: 0.2s;
 }
-
-.card-list .card:hover {
-  -webkit-transform: translateY(-1em);
+.card-list-123123 .card:hover {
   transform: translateY(-1em);
   margin-left: 3rem;
   margin-right: 3rem;
 }
-
-.card-list .card:hover ~ .card {
-  -webkit-transform: translateX(130px);
+.card-list-123123 .card:hover ~ .card {
   transform: translateX(130px);
 }
-
-.card-list .card:not(:first-child) {
+.card-list-123123 .card:not(:first-child) {
   margin-left: -130px;
 }
-
-.card-list .card-header {
+.card-list-123123 .card-header {
   margin-bottom: auto;
 }
-
-.card-list .card-header p {
+.card-list-123123 .card-header p {
   font-size: 14px;
   margin: 0 0 1rem;
   color: #7a7a8c;
 }
-
-.card-list .card-header:hover h2 {
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(#ff8a00),
-    to(#e52e71)
-  );
+.card-list-123123 .card-header:hover h2 {
   background: linear-gradient(90deg, #ff8a00, #e52e71);
   text-shadow: none;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
-.card-list .card-author {
+.card-list-123123 .card-author {
   position: relative;
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 75px 1fr;
   grid-template-columns: 75px 1fr;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   margin: 3rem 0 0;
 }
-
-.card-list .card-author .author-avatar img {
+.card-list-123123 .card-author .author-avatar img {
   display: block;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
   margin: 16px 10px;
 }
-
-.card-list .card-author .half-circle {
+.card-list-123123 .card-author .half-circle {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -121,10 +81,12 @@
   stroke-linecap: round;
   pointer-events: none;
 }
-
-.card-list .card-author .author-name-prefix {
+.card-list-123123 .card-author .author-name-prefix {
   font-style: normal;
   font-weight: 700;
   color: #7a7a8c;
 }
-/*# sourceMappingURL=main.css.map */
+
+.main {
+  padding: 30px;
+}/*# sourceMappingURL=main.css.map */

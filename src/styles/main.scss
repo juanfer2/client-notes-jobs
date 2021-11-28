@@ -1,2 +1,5 @@
-@import 'components/custom_root';
-@import 'components/cards';
+@forward 'components';
+
+.main {
+  padding: 30px;
+}
