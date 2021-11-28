@@ -3,7 +3,8 @@ import {isEmpty} from 'lodash'
 import {env} from '../../contants/api.constant'
 
 const Client: any = new ApolloClient({
-  uri: env.apiUrlGraphql,
+  // uri: env.apiUrlGraphql,
+  uri: "http://localhost:4000/graphql",
   cache: new InMemoryCache({
     addTypename: false,
   }),
