@@ -1,12 +1,11 @@
 import { gql } from '@apollo/client'
 
 export const ME = gql`
-  query me {
-    me {
+  query me{
+    me{
       id
       username
       name
-      authenticationToken
     }
   }
 `

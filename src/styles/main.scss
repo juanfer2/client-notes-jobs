@@ -3,3 +3,14 @@
 .main {
   padding: 30px;
 }
+
+.login-form {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr;
+  gap: 1em;
+  
+  input {
+    width: 100%;
+  }
+}

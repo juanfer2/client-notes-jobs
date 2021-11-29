@@ -13,7 +13,7 @@ import { isAuth } from './middlewares/authentication.middleware'
 import RoutesConfig from './routes'
 /** Actions */
 import { healtAction } from './flux/actions/healt.action'
-// import { getUser } from './flux/actions/user/user.action'
+import { getUser } from './flux/actions/user.action'
 
 import Navbar from './components/navbar'
 import Home from './views/home'
@@ -26,11 +26,21 @@ function App() {
     const startHealtDispacht = () => dispatch(healtAction())
     startHealtDispacht()
     console.log(env)
-  }, [dispatch])
+    console.log(isAuth())
+    console.log(!state.userReducer.user)
 
+    if (isAuth() || !state.userReducer.user) {
+      console.log('search')
+      const startGetUser = () => dispatch(getUser())
+      startGetUser()
+    }
+
+  }, [dispatch])
+  console.log(state)
   return (
     <div className="main">
       <BrowserRouter>
+        <Navbar/>
         <RoutesConfig/>
       </BrowserRouter>
     </div>

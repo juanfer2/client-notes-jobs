@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes, { InferProps } from 'prop-types'
 
 /** Material-UI */
-import { TextField, Button } from '@material-ui/core'
+import { Input, Button } from 'antd';
 
 function FormRegister({
   formik,
@@ -21,58 +21,57 @@ function FormRegister({
   } = formik
 
   return (
-    <div className="login-form">
-      <form onSubmit={formik.handleSubmit}>
-        <TextField
+    <div >
+      <form className="login-form" onSubmit={formik.handleSubmit}>
+        <div>
+          <Input 
           name="username"
-          label="Username"
-          variant="outlined"
           value={values.username}
           onChange={handleChange}
           onBlur={handleBlur}
-          error={touched.username && errors.username}
-          helperText={touched.username && errors.username}
-        />
+          placeholder="Basic usage" 
+          />
+          { touched.username && errors.username && <span> {errors.username} </span> }
+        </div>
 
-        <TextField
+        <div>
+          <Input 
           name="name"
-          label="Name"
-          variant="outlined"
-          onChange={handleChange}
-          onBlur={handleBlur}
           value={values.name}
-          error={touched.name && errors.name}
-          helperText={touched.name && errors.name}
-        />
+          onChange={handleChange}
+          onBlur={handleBlur}
+          placeholder="Basic usage" 
+          />
+          { touched.name && errors.name && <span> {errors.name} </span> }
+        </div>
 
-        <TextField
+        <div>
+          <Input 
           name="password"
-          label="Password"
-          variant="outlined"
-          onChange={handleChange}
-          onBlur={handleBlur}
+          type="password"
           value={values.password}
-          error={touched.password && errors.password}
-          helperText={touched.password && errors.password}
-        />
-
-        <TextField
-          name="passwordConfirmation"
-          label="Password Confirmation"
-          variant="outlined"
           onChange={handleChange}
           onBlur={handleBlur}
+          placeholder="Basic usage" 
+          />
+          { touched.password && errors.password && <span> {errors.password} </span> }
+        </div>
+
+        <div>
+          <Input 
+          name="passwordConfirmation"
+          type="password"
           value={values.passwordConfirmation}
-          error={touched.passwordConfirmation && errors.passwordConfirmation}
-          helperText={
-            touched.passwordConfirmation && errors.passwordConfirmation
-          }
-        />
+          onChange={handleChange}
+          onBlur={handleBlur}
+          placeholder="Basic usage" 
+          />
+          { touched.passwordConfirmation && errors.passwordConfirmation && <span> {errors.passwordConfirmation} </span> }
+        </div>
 
         <Button
-          type="submit"
-          variant="contained"
-          color="primary"
+          type="primary"
+          htmlType="submit"
           onClick={() => onSubmit()}
         >
           Register

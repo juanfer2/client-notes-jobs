@@ -8,6 +8,7 @@ import { isAuth } from '../middlewares/authentication.middleware'
 
 import Home from '../views/home'
 import Register from '../modules/auth/register'
+import ProjectsModule from '../modules/projects'
 // import NotFound from '../pages/notFound'
 import PrivateRoute from './default/protectedRoutes'
 
@@ -31,11 +32,12 @@ function RoutesConfig() {
     <Routes>
      <Route element={<PrivateRoute />}>
         <Route path="/protected" element={<div>DivProtected</div>} />
-        <Route path="/dashboard" element={<div>DivProtected das</div>} />
       </Route>
 
       <Route path="/" element={<Home />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/dashboard" element={<ProjectsModule />} />
+      <Route path='*' element={<div>Page not found</div>} />
     </Routes>
   )
 }

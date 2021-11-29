@@ -38,10 +38,10 @@ export const useRegister = (): useRegisterType => {
     validationSchema: validationSchema,
     initialValues: initialState,
     onSubmit: (values: any) => {
+      console.log('Values')
       console.log(values)
-      console.log('trest')
-      const registerUser = (user: any) => dispatch(RegisterUser(user))
-      registerUser(values)
+      //const registerUser = (user: any) => dispatch(RegisterUser(user))
+      //registerUser(values)
     },
   })
 
