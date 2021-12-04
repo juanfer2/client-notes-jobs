@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from "react-router-dom";
 
 /*Redux */
 import { useDispatch, useSelector } from 'react-redux'
@@ -20,6 +21,7 @@ const initialState: RegisterType = {
 
 export const useRegister = (): useRegisterType => {
   const dispatch = useDispatch()
+  let navigate = useNavigate();
 
   const [state, setState] = useState<RegisterType>(initialState)
 
@@ -40,8 +42,9 @@ export const useRegister = (): useRegisterType => {
     onSubmit: (values: any) => {
       console.log('Values')
       console.log(values)
-      //const registerUser = (user: any) => dispatch(RegisterUser(user))
-      //registerUser(values)
+      const registerUser = (user: any) => dispatch(RegisterUser(user))
+      registerUser(values)
+      navigate(`/`);
     },
   })
 

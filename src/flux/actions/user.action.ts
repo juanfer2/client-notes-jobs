@@ -27,12 +27,10 @@ export const getUser = () => {
       const response = await Client.query({
         query: ME,
       })
-      console.log('response me')
-      console.log(response.data.me)
       dispatch(successGetUser(response.data.me))
     } catch (error) {
       console.log(error)
-      logout()
+      //logout()
       dispatch(errorGetUser(error))
     }
   }

@@ -8,7 +8,7 @@ function PrivateRoute({ component: Component, redirectTo, path, ...props }: any)
   let location = useLocation();
 
   if(!auth) {
-    return <Navigate to='/register' state={{ from: location }}/>;
+    return <Navigate to='/login' state={{ from: location }}/>;
   }
 
  return <Outlet />;

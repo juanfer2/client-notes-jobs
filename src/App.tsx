@@ -31,6 +31,7 @@ function App() {
 
     if (isAuth() || !state.userReducer.user) {
       console.log('search')
+      console.log(localStorage.getItem('token'))
       const startGetUser = () => dispatch(getUser())
       startGetUser()
     }

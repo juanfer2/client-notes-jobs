@@ -21,6 +21,8 @@ export default function (
     case USER_START:
       return { ...state, loadingUser: true, user: null, errorUser: null }
     case USER_SUCCESS:
+      console.log('action')
+      console.log(action)
       return { ...state, user: action.payload, loadingUser: true }
     case USER_ERROR:
       return {

@@ -7,6 +7,7 @@ import {
 import Client from '../../../services/graphqlService/graphql.service'
 import { RegisterType } from '../../../types/modules/auth'
 import { REGISTER_USER } from '../../../graphql/auth/mutations'
+import { setSession } from '../../../middlewares/authentication.middleware'
 
 const startRegister = () => {
   return { type: REGISTER_START }
@@ -29,7 +30,9 @@ export const RegisterUser = (data: RegisterType) => {
         variables: data,
         mutation: REGISTER_USER,
       })
-
+      console.log('response')
+      console.log(response)
+      setSession(response.data.register)
       dispatch(successRegister())
     } catch (error) {
       console.log(error)
