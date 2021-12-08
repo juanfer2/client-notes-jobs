@@ -11,6 +11,7 @@ import { RegisterType, useRegisterType } from '../../../../types/modules/auth'
 /* Formik */
 import { useFormik } from 'formik'
 import { validationSchema } from './validationSchema'
+import { useNotification } from '../../../../hooks/useNotification';
 
 const initialState: RegisterType = {
   username: 'jfvilladiego3@gmail.com',
@@ -20,6 +21,7 @@ const initialState: RegisterType = {
 }
 
 export const useRegister = (): useRegisterType => {
+  const { showNotification } = useNotification()
   const dispatch = useDispatch()
   let navigate = useNavigate();
 
@@ -40,11 +42,14 @@ export const useRegister = (): useRegisterType => {
     validationSchema: validationSchema,
     initialValues: initialState,
     onSubmit: (values: any) => {
-      console.log('Values')
-      console.log(values)
-      const registerUser = (user: any) => dispatch(RegisterUser(user))
-      registerUser(values)
-      navigate(`/`);
+      try {
+        const registerUser = (user: any) => dispatch(RegisterUser(user))
+        registerUser(values)
+        showNotification({placement: 'bottomLeft', type: 'success', message: 'User Register!'})
+        navigate(`/`);
+      } catch (error) {
+        showNotification({placement: 'bottomLeft', type: 'error', message: 'error'})
+      }
     },
   })
 

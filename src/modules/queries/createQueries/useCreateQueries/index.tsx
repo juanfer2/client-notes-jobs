@@ -8,6 +8,7 @@ import { CREATE_QUERY_SCRIPTS } from '../../../../graphql/query_scripts/mutation
 /* Formik */
 import { useFormik, getIn } from 'formik'
 import { validationSchema } from './validationSchema'
+import { useNotification } from '../../../../hooks/useNotification';
 
 export type ScriptType = {
   title: string
@@ -23,6 +24,7 @@ export type QueryScriptType = {
 }
 
 export const useCreateQueries = () => {
+  const { showNotification } = useNotification()
   let navigate = useNavigate();
   const params: any = useParams();
   const projectId = parseInt(params.id)
@@ -42,9 +44,11 @@ export const useCreateQueries = () => {
           mutation: CREATE_QUERY_SCRIPTS,
           variables: values
         })
+        showNotification({placement: 'bottomLeft', type: 'success', message: 'User Created!'})
         navigate(`/dashboard/projects/${projectId}`);
       } catch (error) {
        console.log(error) 
+       showNotification({placement: 'bottomLeft', type: 'error', message: 'error'})
       }
     },
   })

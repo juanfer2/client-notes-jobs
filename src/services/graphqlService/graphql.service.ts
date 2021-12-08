@@ -5,7 +5,7 @@ import {env} from '../../contants/api.constant'
 // 'http://localhost:4000/graphql'
 // uri: env.apiUrlGraphql,
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'https://notes-jobs-production.up.railway.app/graphql',
 });
 
 const authLink: any = setContext((_, { headers }) => {

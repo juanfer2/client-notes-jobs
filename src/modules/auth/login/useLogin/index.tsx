@@ -10,6 +10,7 @@ import { LoginType, useLoginType } from '../../../../types/modules/auth'
 /* Formik */
 import { useFormik } from 'formik'
 import { validationSchema } from './validationSchema'
+import { useNotification } from '../../../../hooks/useNotification';
 
 const initialState: LoginType = {
   username: 'juanfer',
@@ -17,6 +18,7 @@ const initialState: LoginType = {
 }
 
 export const useLogin = (): useLoginType => {
+  const { showNotification } = useNotification()
   const dispatch = useDispatch()
   const [state, setState] = useState<LoginType>(initialState)
   let navigate = useNavigate();
@@ -36,9 +38,14 @@ export const useLogin = (): useLoginType => {
     validationSchema: validationSchema,
     initialValues: initialState,
     onSubmit: async (values) => {
-      const startLoginUser = (user: any) => dispatch(loginUser(user))
-      await startLoginUser(values)
-      navigate(`/dashboard`);
+      try {
+        const startLoginUser = (user: any) => dispatch(loginUser(user))
+        await startLoginUser(values)
+        showNotification({placement: 'bottomLeft', type: 'success', message: 'User Login!'})
+        navigate(`/dashboard`);
+      } catch (error) {
+        showNotification({placement: 'bottomLeft', type: 'error', message: 'error'})
+      }
     },
   })
 
