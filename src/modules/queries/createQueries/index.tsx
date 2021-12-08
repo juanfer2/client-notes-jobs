@@ -1,12 +1,11 @@
-import React from 'react'
-import { CopyBlock, dracula  } from "react-code-blocks";
-import { useCreateQueries } from './useCreateQueries'
+import React from 'react';
+import { useCreateQueries } from './useCreateQueries';
+import { getIn } from 'formik'
 /** Material-UI */
 import { Input, Button  } from 'antd';
 
-
 function QueriesModule() {
-  const { formik } = useCreateQueries()
+  const { formik, addScript } = useCreateQueries()
   const { TextArea } = Input;
 
   const {
@@ -19,6 +18,7 @@ function QueriesModule() {
     handleSubmit,
     isSubmitting,
     setFieldValue,
+    setValues
   } = formik
 
   return (
@@ -46,6 +46,65 @@ function QueriesModule() {
           />
           { touched.description && errors.description && <span> {errors.description} </span> }
         </div>
+
+        { values.scripts && <h4>Add scripts</h4> }
+        {
+          values.scripts && values.scripts.map( (script: any, index: number) => <div key={index}>
+            {console.log(script)}
+            <div>
+              <Input 
+              name={`scripts[${index}][title]`}
+              value={script.title}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              placeholder="Title" 
+              />
+              { 
+                getIn(touched, `scripts[${index}][title]`) && 
+                getIn(errors, `scripts[${index}][title]`) &&
+                <span> {getIn(errors, `scripts[${index}][title]`)} </span> }
+            </div>
+
+            <div>
+              <Input 
+              name={`scripts[${index}][type]`}
+              value={script.type}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              placeholder="type" 
+              />
+              { 
+                getIn(touched, `scripts[${index}][type]`) && 
+                getIn(errors, `scripts[${index}][type]`) && 
+                <span> {getIn(errors, `scripts[${index}][type]`)} </span> 
+              }
+            </div>
+
+            <div>
+            <TextArea  
+              rows={2}
+              name={`scripts[${index}][content]`}
+              value={script.content}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              placeholder="Content" 
+              />
+              { 
+                getIn(touched, `scripts[${index}][content]`) && 
+                getIn(errors, `scripts[${index}][content]`) && 
+                <span> {getIn(errors, `scripts[${index}][content]`)} </span> 
+              }
+            </div>
+          </div>
+          )
+        }
+
+        <Button
+          type="dashed"
+          onClick={() => addScript()}
+        >
+          append Query
+        </Button>
 
         <Button
           type="primary"

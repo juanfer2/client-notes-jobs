@@ -16,7 +16,7 @@ function DetailsProject() {
     <div>
       {
         project.queryScripts && project.queryScripts.map( (query: any) => <div key={query.id}>
-          <h3>{ query.title }</h3>
+          <h3>- { query.title }</h3>
           { query && query.scripts.map( (script: any) => <div key={script.id}>
             { script.title && <h4> { script.title } </h4> }
             <CopyBlock
