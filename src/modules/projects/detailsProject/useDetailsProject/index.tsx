@@ -30,6 +30,10 @@ export const useDetailsProject = () => {
     }
   }
 
+  const navigationQuery = () => {
+
+  }
+
   useEffect(() => {
     getProjectById()
   }, [])

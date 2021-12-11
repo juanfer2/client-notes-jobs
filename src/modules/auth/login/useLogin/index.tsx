@@ -41,10 +41,10 @@ export const useLogin = (): useLoginType => {
       try {
         const startLoginUser = (user: any) => dispatch(loginUser(user))
         await startLoginUser(values)
-        showNotification({placement: 'bottomLeft', type: 'success', message: 'User Login!'})
+        showNotification({placement: 'topLeft', type: 'success', message: 'User Login!'})
         navigate(`/dashboard`);
       } catch (error) {
-        showNotification({placement: 'bottomLeft', type: 'error', message: 'error'})
+        showNotification({placement: 'topLeft', type: 'error', message: 'error'})
       }
     },
   })

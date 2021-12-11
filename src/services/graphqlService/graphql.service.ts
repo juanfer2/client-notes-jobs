@@ -2,6 +2,7 @@ import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import {env} from '../../contants/api.constant'
 
+// 'https://notes-jobs-production.up.railway.app/graphql'
 // 'http://localhost:4000/graphql'
 // uri: env.apiUrlGraphql,
 const httpLink = createHttpLink({

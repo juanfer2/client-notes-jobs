@@ -3,9 +3,11 @@ import { List, Avatar } from 'antd';
 import { useDetailsProject } from './useDetailsProject'
 import { useNavigate } from "react-router-dom";
 import { CopyBlock, dracula  } from "react-code-blocks";
+import { useNavigation  } from "../../../routes/useNavigation";
+import { Input, Button  } from 'antd';
 
 function DetailsProject() {
-  let navigate = useNavigate()
+  const { goCreateQuery } = useNavigation()
   const { loandingProject, error, project }: 
     { loandingProject: boolean, error: any, project: any } = useDetailsProject()
 
@@ -13,7 +15,15 @@ function DetailsProject() {
   if (error) return <div>error</div>
 
   return (
-    <div>
+    <div className='details-project'>
+      <div className='container-button-create'>
+        <Button
+          type="dashed"
+          onClick={() => goCreateQuery()}
+        >
+          CreateQuery
+        </Button>
+      </div>
       {
         project.queryScripts && project.queryScripts.map( (query: any) => <div key={query.id}>
           <h3>- { query.title }</h3>

@@ -3,70 +3,51 @@ import PropTypes from 'prop-types';
 import { useNavigate } from "react-router-dom";
 import {NavbarType} from './types'
 import { PageHeader, Menu, Dropdown, Button, Tag, Typography, Row } from 'antd';
+import { isAuth, logout } from '../../middlewares/authentication.middleware';
 
 
+export type menuType = {
+  name: string;
+  url: string;
+  type: "primary" | "link" | "text" | "ghost" | "default" | "dashed" | undefined
+}
 
 function Navbar ({ name='myValue' }: NavbarType) {
   let navigate = useNavigate();
-  const { Paragraph } = Typography;
-  const routes = [
-    {
-      path: 'index',
-      breadcrumbName: 'First-level Menu',
-    },
-    {
-      path: 'first',
-      breadcrumbName: 'Second-level Menu',
-    },
-    {
-      path: 'second',
-      breadcrumbName: 'Third-level Menu',
-    },
-  ];
+  const privateRoutes: menuType[] = [
+    { name: 'Dashboard', url: `/dashboard`, type: "default" },
+    { name: 'Logout', url: '/', type: "primary" }
+  ]
 
-  const menu = (
-    <Menu>
-      <Menu.Item>
-        <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
-          1st menu item
-        </a>
-      </Menu.Item>
-      <Menu.Item>
-        <a target="_blank" rel="noopener noreferrer" href="http://www.taobao.com/">
-          2nd menu item
-        </a>
-      </Menu.Item>
-      <Menu.Item>
-        <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
-          3rd menu item
-        </a>
-      </Menu.Item>
-    </Menu>
-  );
+  const publicRoutes: menuType[] = [
+    { name: 'Register', url: `/register`, type: "default" },
+    { name: 'login', url: `/login`, type: "primary" }
+  ]
 
-  const DropdownMenu = () => (
-    <Dropdown key="more" overlay={menu}>
-      <Button
-        style={{
-          border: 'none',
-          padding: 0,
-        }}
-      >
-      </Button>
-    </Dropdown>
-  );
-  
+  const logoutUser = (url: string) => {
+    logout()
+    navigate(url)
+  }
+
+  const renderMenu = (menuOptions: menuType[]) => {
+    return menuOptions && menuOptions.map( (menu: menuType, index: number) =>(
+      <Button key={index} 
+        onClick={ 
+          () => menu.name == 'Logout' ? logoutUser(menu.url) : navigate(menu.url) 
+        } 
+        type={menu.type}> 
+        {menu.name} 
+      </Button>)
+    )
+  }
+
   return (
     <PageHeader
       title="CoManZ"
       className="site-page-header"
-      extra={[
-        <Button key="3" onClick={ () => navigate(`/dashboard`) }>Dashboard</Button>,
-        <Button key="2" onClick={ () => navigate(`/register`) }>Register</Button>,
-        <Button key="1" type="primary" onClick={ () => navigate(`/login`) } >
-          Login
-        </Button>,
-      ]}
+      extra={
+        isAuth() ? renderMenu(privateRoutes) : renderMenu(publicRoutes)
+      }
     />
   )
 }

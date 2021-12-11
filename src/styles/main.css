@@ -87,6 +87,11 @@
   color: #7a7a8c;
 }
 
+.details-project .container-button-create {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .main {
   padding: 30px;
 }

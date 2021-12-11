@@ -32,7 +32,7 @@ export const useCreateQueries = () => {
     title: '',
     description: '',
     projectId,
-    scripts: []
+    scripts: [{title: "", type: "", content: ""}]
   }
 
   const formik = useFormik({

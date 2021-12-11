@@ -12,6 +12,7 @@ export const PROJECTS = gql`
         scripts{
           id
           title
+          type
           content
         }
       }
@@ -31,6 +32,7 @@ query projectById($id: Int!) {
 			scripts {
 				id
 				title
+        type
 				content
 			}
 		}
