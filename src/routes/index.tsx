@@ -1,10 +1,6 @@
 import React from 'react'
 import { render } from "react-dom";
-import {
-  Route,
-  Routes,
-} from "react-router-dom";
-import { isAuth } from '../middlewares/authentication.middleware'
+import { Route, Routes } from "react-router-dom";
 
 import Home from '../views/home'
 import Register from '../modules/auth/register'
@@ -12,9 +8,10 @@ import Login from '../modules/auth/login'
 import ProjectsModule from '../modules/projects'
 import DetailsProject from '../modules/projects/detailsProject'
 import CreateQueries from '../modules/queries/createQueries'
-
 // import NotFound from '../pages/notFound'
 import PrivateRoute from './default/protectedRoutes'
+import CreateProject from '../modules/projects/createProject';
+import UpdateProject from '../modules/projects/updateProject';
 
 function RoutesConfig() {
   
@@ -23,7 +20,13 @@ function RoutesConfig() {
       path: '/dashboard', element: <ProjectsModule />
     },
     {
+      path: '/dashboard/projects/create', element: <CreateProject />
+    },
+    {
       path: '/dashboard/projects/:id', element: <DetailsProject />
+    },
+    {
+      path: '/dashboard/projects/:id/edit', element: <UpdateProject />
     },
     {
       path: '/dashboard/projects/:id/queries/create', element: <CreateQueries />
@@ -46,7 +49,7 @@ function RoutesConfig() {
   ]
 
   return (
-    <Routes>
+    <Routes >
       <Route element={<PrivateRoute />}>
         { componentsProtected.map((component: any, index: number) => 
           <Route key={index} path={component.path} element={component.element}/>)}

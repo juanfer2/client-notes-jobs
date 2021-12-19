@@ -6,7 +6,7 @@ function Toast() {
     notification.open({
       placement,
       bottom: 50,
-      duration: 3,
+      duration: 5,
       message: 'This notification',
       type: type
     })

@@ -31,7 +31,7 @@ function DetailsProject() {
             { script.title && <h4> { script.title } </h4> }
             <CopyBlock
             text={script.content}
-            language={script.type || 'text'}
+            language={script.type || ''}
             showLineNumbers={false}
             startingLineNumber={2}
             theme={dracula}

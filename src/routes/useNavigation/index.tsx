@@ -8,5 +8,9 @@ export const useNavigation = () => {
     navigate(`queries/create`);
   }
 
-  return { goCreateQuery }
+  const goCreateProject = () =>{
+    navigate(`/dashboard/projects/create`);
+  }
+
+  return { goCreateQuery, goCreateProject }
 }

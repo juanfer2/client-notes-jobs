@@ -3,6 +3,7 @@ import { useCreateQueries } from './useCreateQueries';
 import { getIn } from 'formik'
 /** Material-UI */
 import { Input, Button  } from 'antd';
+import Editor from "@monaco-editor/react";
 
 function QueriesModule() {
   const { formik, addScript } = useCreateQueries()
@@ -81,6 +82,16 @@ function QueriesModule() {
             </div>
 
             <div>
+            <div>
+              <Editor
+                height="30vh"
+                defaultLanguage="javascript"
+                defaultValue={script.content}
+                onChange={handleChange}
+                theme='vs-dark'
+              />
+            </div>
+
             <TextArea  
               rows={2}
               name={`scripts[${index}][content]`}

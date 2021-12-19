@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
 import Client from '../../../services/graphqlService/graphql.service'
 import { PROJECTS } from '../../../graphql/projects/queries'
 
 export const useProjects = () => {
-  const dispatch = useDispatch()
   const [state, setState] = useState<any>({
     loandingProjects: false,
     error: null,

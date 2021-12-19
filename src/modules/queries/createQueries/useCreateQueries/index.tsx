@@ -44,7 +44,7 @@ export const useCreateQueries = () => {
           mutation: CREATE_QUERY_SCRIPTS,
           variables: values
         })
-        showNotification({placement: 'bottomLeft', type: 'success', message: 'User Created!'})
+        showNotification({placement: 'bottomLeft', type: 'success', message: 'Queries Created!'})
         navigate(`/dashboard/projects/${projectId}`);
       } catch (error) {
        console.log(error) 

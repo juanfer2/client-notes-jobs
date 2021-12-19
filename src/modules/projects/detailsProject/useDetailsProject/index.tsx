@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react'
 import Client from '../../../../services/graphqlService/graphql.service'
 import { PROJECT_BY_ID } from '../../../../graphql/projects/queries'
+import { useParams } from "react-router-dom";
 
 export const useDetailsProject = () => {
+  const params: any = useParams();
+  const id = parseInt(params.id)
   const [state, setState] = useState<any>({
     loandingProject: false,
     error: null,
@@ -12,14 +15,10 @@ export const useDetailsProject = () => {
   const getProjectById = async() => {
     try {
       setState({...state, loandingProject: true, error: null, project: {} })
-
       const response = await Client.query({
         query: PROJECT_BY_ID,
-        variables: { id: 1 }
+        variables: { id }
       })
-
-      console.log('response.data')
-      console.log(response)
 
       setState({...state, loandingProject: false, error: null,
         project: response.data.projectById })
@@ -28,10 +27,6 @@ export const useDetailsProject = () => {
       setState({...state, loandingProject: false, error: error,
         project: {} })
     }
-  }
-
-  const navigationQuery = () => {
-
   }
 
   useEffect(() => {
